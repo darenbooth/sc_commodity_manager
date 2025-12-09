@@ -1,9 +1,10 @@
-# 🚀 Star Citizen Commodity Tracker (CLI)
+# 🚀 Star Citizen Commodity Manager (CLI)
 ## Project Overview
 
 This is a persistent, command-line application written in Rust designed specifically for Star Citizen traders. It helps you keep track of your goods, manage your expenses, and calculate your trading profits.
 
 Your inventory data is automatically saved to a local file (inventory_data.json) between sessions, so you don't lose track of your assets.
+
 ## Key Features ✨
 
 * Multi-Asset Tracking: Keep track of the inventory, total cost, and average cost for any number of different commodities (e.g., Astatine, Laranite, Gold).
@@ -28,18 +29,20 @@ Download the Executable:
 
 3. Download the file that matches your operating system (e.g., the file ending in .exe for Windows).
 
-4. Unzip and Place: Unzip the downloaded file (windows) and place the main executable (named star_citizen_commodity_tracker or star_citizen_commodity_tracker.exe) in a simple, easy-to-access folder.
+4. Unzip and Place: Unzip the downloaded file (windows) and place the main executable (named sc_commodity_manager or sc_commodity_manager.exe) in a simple, easy-to-access folder.
 
 ## Running the Tracker
 
 ### Windows
-1. Simply just open up the .exe file with mouse click/s
+
+1. Simply just open up the .exe file with mouse click/s.
 
 ### Linux/macOS:
+
 1. Open the terminal.
 2. Use the cd command to navigate to the executable's folder.
-3. Type: `chmod +x` to make the file executable.
-4. Type: `./sc_commodity_tracker`.
+3. Type: `chmod +x sc_commodity_manager` to make the file executable.
+4. Type: `./sc_commodity_manager`.
 
 Once started, the tracker will welcome you and ask for your first transaction.
 
@@ -60,7 +63,7 @@ Net Profit/Loss=Sale Revenue−Cost of Goods Sold (COGS)−Transport Fees.
 
 ## Contributing
 
-If you want to contribute to the code, fix bugs, or suggest new features (like integrating specific Star Citizen price data), feel free to submit a pull request!
+If you want to contribute to the code, fix bugs, or suggest new features, feel free to submit a pull request!
 
 ## License
 This project is licensed under the MIT License.
