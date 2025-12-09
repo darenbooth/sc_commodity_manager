@@ -1,76 +1,76 @@
 🚀 Star Citizen Commodity Tracker (CLI)
 Project Overview
 
-This is a simple, persistent command-line interface (CLI) application written in Rust designed to help Star Citizen traders track their commodity inventory, calculate the average cost per unit, and determine Net Profit/Loss on sales.
+This is a persistent, command-line application written in Rust designed specifically for Star Citizen traders. It helps you keep track of your goods, manage your expenses, and calculate your trading profits.
 
-Since the application uses local file persistence, your inventory data is saved between sessions.
-Features ✨
+Your inventory data is automatically saved to a local file (inventory_data.json) between sessions, so you don't lose track of your assets.
+Key Features ✨
 
-    Multi-Asset Tracking: Track inventory, total cost, and average cost for any number of different commodities (e.g., Astatine, Laranite, Gold).
+    Multi-Asset Tracking: Keep track of the inventory, total cost, and average cost for any number of different commodities (e.g., Astatine, Laranite, Gold).
 
-    Transaction Processing: Supports both Buy (B) and Sell (S) transactions.
+    Simple Transactions: Easily record Buy (B) and Sell (S) operations.
 
-    Cost Management: Automatically calculates the cost basis for remaining inventory using the Average Cost Method.
+    Net Profit/Loss: Calculate your final profit on sales by subtracting the original cost and associated Transportation Fees from the revenue.
 
-    Net Profit Calculation: Calculates the Net Profit or Loss for each sale by subtracting the Cost of Goods Sold (COGS) and any associated Transportation Fees.
+    Automatic Cost Basis: The program automatically updates the cost of your remaining inventory using the Average Cost Method.
 
-    Session Summary: Displays the total Net Profit/Loss accumulated during the current run of the program.
+    Session Summary: Displays the total Net Profit/Loss accumulated during the time you've had the program open.
 
-    Persistence: Saves and loads inventory data to a local file (inventory_data.json) to persist between uses.
+    Data Persistence: Your inventory data is saved and loaded automatically using a local JSON file.
 
 Installation & Setup
 
-You can download a pre-compiled, optimized version of the application directly from GitHub Releases.
+You don't need to install Rust or any other programming language to run this! You just need to download the executable for your system from GitHub.
 
-    Go to Releases: Navigate to the Releases page for this repository on GitHub.
+    Download the Executable:
 
-    Download the Asset: Under the latest version, look for the Assets section and download the file corresponding to your operating system:
+        Go to the Releases page for this repository on GitHub.
 
-        Windows: Download the file ending in .exe.
+        Look for the Assets section under the latest version.
 
-        Linux/macOS: Download the file without an extension (or one labeled for your specific OS).
+        Download the file that matches your operating system (e.g., the file ending in .exe for Windows).
 
-    Extract: Unzip the downloaded file (if necessary) and place the executable in a convenient location (like a dedicated StarCitizenTracker folder).
+    Unzip and Place: Unzip the downloaded file (if necessary) and place the main executable (named star_citizen_commodity_tracker or star_citizen_commodity_tracker.exe) in a simple, easy-to-access folder.
 
-Running the Application
+Running the Tracker
 
-The application is run directly from your system's command line or terminal.
-Platform	Command to Run
-Windows	1. Open Command Prompt or PowerShell. 2. Navigate to your application folder using cd path\to\folder. 3. Execute: .\star_citizen_commodity_tracker.exe
-Linux/macOS	1. Open Terminal. 2. Navigate to your application folder using cd path/to/folder. 3. Execute: ./star_citizen_commodity_tracker
+You must run the program from your command line or terminal:
 
-Once executed, the application will greet you and prompt you for the first transaction.
+    On Windows:
+
+        Open Command Prompt or PowerShell.
+
+        Use the cd command to navigate to the folder where you saved the executable.
+
+        Type: .\star_citizen_commodity_tracker.exe
+
+    On Linux/macOS:
+
+        Open Terminal.
+
+        Use the cd command to navigate to the executable's folder.
+
+        Type: ./star_citizen_commodity_tracker
+
+Once started, the tracker will welcome you and ask for your first transaction.
 How to Use 🧭
 
-The program runs in a continuous loop, prompting you for transaction details.
-Command	Action	Description
-B	Buy	Increases inventory and adds the purchase cost (plus fees) to the total cost.
-S	Sell	Decreases inventory, calculates Net Profit/Loss, and updates the remaining inventory cost basis.
-Q	Quit	Exits the program and saves the current inventory state to inventory_data.json. This is necessary to save your progress!
-Data Persistence
+The program runs in a continuous loop, asking you what you want to do next.
 
-    Upon first run, the program creates an empty inventory_data.json file in the same directory as the executable.
+    Start a Transaction: Type B to buy commodities or S to sell them.
 
-    The application loads this file when starting.
+    Save and Exit: Type Q to quit the application. This is essential because the program only saves your data when you quit.
 
-    The application saves the updated inventory to this file when you quit (Q).
+How the Costs are Handled
 
-    DO NOT manually edit inventory_data.json while the program is running.
+    When you Buy, the total cost you pay plus any transportation fees are added to the cost basis of your inventory.
 
-Data Structure & Calculations
-
-The core data is stored in a HashMap where the key is the asset name (String), and the value is the inventory data.
-Key Calculations:
-
-    Average Cost Per Unit: Calculated as Quantity in InventoryTotal Cost in Inventory​
-
-    Cost of Goods Sold (COGS): Calculated as Quantity Sold×Average Cost Per Unit
-
-    Net Profit/Loss: Calculated as Total Sale Revenue−COGS−Transport Fees
+    When you Sell, the program calculates the Net Profit/Loss for that sale:
+    Net Profit/Loss=Sale Revenue−Cost of Goods Sold (COGS)−Transport Fees
 
 Contributing
 
-If you'd like to improve this project, feel free to submit a pull request! Any suggestions for improving the logic, adding features (like a batch/FIFO tracking method), or enhancing the CLI are welcome.
+If you want to contribute to the code, fix bugs, or suggest new features (like integrating specific Star Citizen price data), feel free to submit a pull request!
 License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License.
