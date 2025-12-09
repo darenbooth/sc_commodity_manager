@@ -102,6 +102,16 @@ fn print_summary(inventory_map: &HashMap<String, AssetData>) {
     println!("---------------------------------");
 }
 
+// Function to pause the execution and wait for user input
+fn wait_for_exit() {
+    println!("\nPress ENTER or RETURN to close the window...");
+    // Flush stdout to ensure the prompt is displayed immediately
+    let _ = io::stdout().flush();
+    // Read a line from stdin, effectively pausing the program until Enter is pressed
+    let mut exit_input = String::new();
+    let _ = io::stdin().read_line(&mut exit_input);
+}
+
 fn main() {
     // 1. Load inventory at startup
     let mut inventory_map = load_inventory();
@@ -152,9 +162,9 @@ fn main() {
 
         // --- Get Transaction Amount ---
         let amount_prompt = match transaction_type.as_str() {
-            "B" => "Enter the **TOTAL PURCHASE COST** (in Credits):",
-            "S" => "Enter the **TOTAL SALE REVENUE** (in Credits):",
-            _ => "Enter the total transaction amount (in Credits):",
+            "B" => "Enter the **TOTAL PURCHASE COST** (in aUEC):",
+            "S" => "Enter the **TOTAL SALE REVENUE** (in aUEC):",
+            _ => "Enter the total transaction amount (in aUEC):",
         };
         let amount = match read_float_input(amount_prompt) {
             Ok(a) => a,
@@ -203,9 +213,9 @@ fn main() {
                 
                 // Output Result
                 if net_profit_loss >= 0.0 {
-                    println!("\n🎉 SALE SUCCESSFUL! Net Profit on {} sale: {:.2} Credits", asset_name, net_profit_loss);
+                    println!("\n🎉 SALE SUCCESSFUL! Net Profit on {} sale: {:.2} aUEC", asset_name, net_profit_loss);
                 } else {
-                    println!("\n💔 SALE SUCCESSFUL! Net Loss on {} sale: {:.2} Credits", asset_name, net_profit_loss);
+                    println!("\n💔 SALE SUCCESSFUL! Net Loss on {} sale: {:.2} aUEC", asset_name, net_profit_loss);
                 }
                 println!("    (Total Revenue: {:.2}, COGS: {:.2}, Fees: {:.2})", amount, cost_of_goods_sold, transport_fees);
 
@@ -232,10 +242,14 @@ fn main() {
     // Final session summary
     println!("\n=== FINAL SESSION SUMMARY ===");
     if session_profit_loss >= 0.0 {
-        println!("💰 **TOTAL SESSION NET PROFIT:** {:.2} Credits", session_profit_loss);
+        println!("💰 **TOTAL SESSION NET PROFIT:** {:.2} aUEC", session_profit_loss);
     } else {
-        println!("🔻 **TOTAL SESSION NET LOSS:** {:.2} Credits", session_profit_loss);
+        println!("🔻 **TOTAL SESSION NET LOSS:** {:.2} aUEC", session_profit_loss);
     }
     println!("=============================");
     print_summary(&inventory_map);
-}
+    
+    // Pause before closing the window
+    wait_for_exit();
+} // End of main function
+
